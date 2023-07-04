@@ -1,0 +1,20 @@
+---Query for joining customers to orders with customerNumber---
+
+1 SELECT * FROM 'customers'
+2 JOIN orders ON orders.customerNumber = customers.customerNumber
+3 Where orders.customerNumber = 103; 
+
+
+
+---Query for joining orders to orderdetails with orderNumber---  
+
+1 SELECT * FROM 'orders'
+2 JOIN orderdetails ON orderdetails.orderNumber = orders.orderNumber
+3 WHERE orders.orderNumber = 10100
+
+
+---Query for joining orderdetails to products with productCode---  
+
+1 SELECT * FROM 'products'
+2 JOIN orderdetails ON orderdetails.productCode = products.productCode
+3 WHERE products.productCode = "S18_1749"
