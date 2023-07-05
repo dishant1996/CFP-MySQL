@@ -1,0 +1,78 @@
+------QUERY FOR CREATING STUDENTS TABLE------
+
+
+create table students(
+
+ID int AUTOINCREMENT,
+NAME   varchar(30),
+PERCENTAGE int,
+AGE int,
+GENDER varchar,
+CITY int,
+COURSES int ,
+PRIMARY KEY (ID)
+
+)
+
+
+
+
+------IF-------
+
+
+SELECT `id`, `name`, `percentage`,
+CASE
+WHEN percentage >=80 AND percentage<90 THEN "1ST CLASS"
+WHEN percentage >=60 AND percentage<79 THEN "2ND CLASS"
+WHEN percentage >=90 AND percentage<100 THEN "DISTINCTION"
+IF (percentage >= 33,"PASS","FAIL") AS Result
+      FROM students;
+
+
+
+
+
+------CASE-------
+
+
+SELECT `id`, `name`, `percentage`,
+CASE
+WHEN percentage >=80 AND percentage<90 THEN "1ST CLASS"
+WHEN percentage >=60 AND percentage<79 THEN "2ND CLASS"
+WHEN percentage >=90 AND percentage<100 THEN "DISTINCTION"
+WHEN percentage < 33 THEN "FAIL"
+      ELSE "ERROR"
+      END AS GRADE
+      FROM students;
+
+
+---------UPDATE PERCENTAGE-------
+
+
+UPDATE `students` SET 
+percentage =( CASE id
+             WHEN 1 THEN 89
+             WHEN 3 THEN 77
+             END )
+             WHERE id IN (1,3)
+             
+
+-----GROUPBY GENDER-------
+
+
+SELECT COUNT(id),name,percentage,gender FROM `students`
+GROUP BY gender;
+ 
+
+1)ASCENDING
+
+SELECT COUNT(id),name,percentage,gender,age FROM `students` 
+GROUP BY age 
+ORDER BY age ASC;;
+
+2)DESCENDING
+
+SELECT COUNT(id),name,percentage,gender,age FROM `students` 
+GROUP BY age 
+ORDER BY age DESC;;
+
